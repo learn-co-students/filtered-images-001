@@ -9,13 +9,12 @@
 #import "FISViewController.h"
 #import "UIImage+Filters.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "FISFilterOperation.h"
 
 
 @interface FISViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) NSOperationQueue *filterQueue;
-
-- (IBAction)vignetterTapped:(id)sender;
 
 @end
 
@@ -26,7 +25,6 @@
     [super viewDidLoad];
     
     self.filterQueue = [[NSOperationQueue alloc] init];
-
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -36,67 +34,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)vignetterTapped:(UIButton *)sender {
 
-    UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
-
-    __block UIImage *filtered;
+- (IBAction)filterTapped:(UIButton *)sender {
+    
+    FISFilterOperation *filterOp = [[FISFilterOperation alloc] init];
+    filterOp.imageToFilter = [UIImage imageNamed:@"Mickey.jpg"];
+    filterOp.filterBlock = ^(UIImage *filteredImage) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.imageView.image = filteredImage;
+    };
+    
+    if ([sender.titleLabel.text isEqualToString:@"Sepia"]) {
+        filterOp.filterType = UIImageFilterTypeSepia;
+    }
+    else if ([sender.titleLabel.text isEqualToString:@"Invert Color"]) {
+        filterOp.filterType = UIImageFilterTypeColorInvert;
+    }
+    else if ([sender.titleLabel.text isEqualToString:@"Vignette"]) {
+        filterOp.filterType = UIImageFilterTypeVignette;
+    }
+    
+    [self.filterQueue addOperation:filterOp];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [self.filterQueue addOperationWithBlock:^{
-        filtered = [nonFiltered imageWithFilter:UIImageFilterTypeVignette];
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            self.imageView.image = filtered;
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-        }];
-    }];
-}
-
-
-- (IBAction)invertColorTapped:(UIButton *)sender {
-    
-    UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
-    
-    __block UIImage *filtered;
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-    [self.filterQueue addOperationWithBlock:^{
-        filtered = [nonFiltered imageWithFilter:UIImageFilterTypeColorInvert];
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            self.imageView.image = filtered;
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-        }];
-    }];
-    
-    
-}
-
-
-- (IBAction)sepiaTapped:(UIButton *)sender {
-    
-    UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
-    
-    __block UIImage *filtered;
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-    [self.filterQueue addOperationWithBlock:^{
-
-        filtered = [nonFiltered imageWithFilter:UIImageFilterTypeSepia];
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            self.imageView.image = filtered;
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-        }];
-    }];
-    
     
 }
 

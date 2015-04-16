@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3155F04B1ADF046700E1FDFA /* FISFilterOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3155F04A1ADF046700E1FDFA /* FISFilterOperation.m */; };
 		317B53CF1ADEF73800E82B6E /* UIImage+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 317B53CE1ADEF73800E82B6E /* UIImage+Filters.m */; };
 		D833EF88197FE7CE00E99358 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF87197FE7CE00E99358 /* Foundation.framework */; };
 		D833EF8A197FE7CE00E99358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF89197FE7CE00E99358 /* CoreGraphics.framework */; };
@@ -38,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		23A64BCE1E244A3BB2D39FCB /* Pods-filtered-images.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-filtered-images.debug.xcconfig"; path = "Pods/Target Support Files/Pods-filtered-images/Pods-filtered-images.debug.xcconfig"; sourceTree = "<group>"; };
+		3155F0491ADF046700E1FDFA /* FISFilterOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISFilterOperation.h; sourceTree = "<group>"; };
+		3155F04A1ADF046700E1FDFA /* FISFilterOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISFilterOperation.m; sourceTree = "<group>"; };
 		317B53CD1ADEF73800E82B6E /* UIImage+Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Filters.h"; sourceTree = "<group>"; };
 		317B53CE1ADEF73800E82B6E /* UIImage+Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Filters.m"; sourceTree = "<group>"; };
 		3ACCD107016F40028AF55B27 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +153,8 @@
 				D833EFBC197FE82800E99358 /* Mickey.jpg */,
 				D833EF9C197FE7CE00E99358 /* FISViewController.h */,
 				D833EF9D197FE7CE00E99358 /* FISViewController.m */,
+				3155F0491ADF046700E1FDFA /* FISFilterOperation.h */,
+				3155F04A1ADF046700E1FDFA /* FISFilterOperation.m */,
 				D833EF9F197FE7CE00E99358 /* Images.xcassets */,
 				317B53D01ADEF73C00E82B6E /* UIImage+Filters */,
 				D833EF8E197FE7CE00E99358 /* Supporting Files */,
@@ -323,6 +328,7 @@
 				D833EF9E197FE7CE00E99358 /* FISViewController.m in Sources */,
 				317B53CF1ADEF73800E82B6E /* UIImage+Filters.m in Sources */,
 				D833EF94197FE7CE00E99358 /* main.m in Sources */,
+				3155F04B1ADF046700E1FDFA /* FISFilterOperation.m in Sources */,
 				D833EF98197FE7CE00E99358 /* FISAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
