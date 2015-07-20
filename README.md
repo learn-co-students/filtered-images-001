@@ -5,6 +5,22 @@ languages: objc
 
 # Filtered Images
 
+##SOLUTION
+
+### Working with NSOperationQueue (1/2)
+<video controls width="100%">
+<source src="https://curriculum-content.s3.amazonaws.com/ios/NSOperation/nsoperationqueue.mp4" type="video/mp4" >
+  Your browser does not support the video tag. We recommend using Chrome.
+  </video> 
+  
+  
+### Subclassing NSOperation (2/2)
+  <video controls width="100%">
+<source src="https://curriculum-content.s3.amazonaws.com/ios/NSOperation/NSOperationSublclass.mp4" type="video/mp4" >
+  Your browser does not support the video tag. We recommend using Chrome.
+  </video> 
+
+
 ## Instructions
 
   1. Open up the project! We are going to filter an image of my friend Mickey climbing up a mountain. I took this with my iPhone so it's just a regular picture that a anyone could take. You'll notice it is a jpg. To deal with jpgs we have to use the fullname of the file when you grab the `UIImage`. 
