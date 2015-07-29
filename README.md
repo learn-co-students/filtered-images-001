@@ -1,7 +1,4 @@
----
-tags: cocoapods, background, nsoperationqueue
-languages: objc
----
+
 
 # Filtered Images
 
