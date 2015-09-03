@@ -9,5 +9,8 @@ end
 
 target 'filtered-imagesTests' do
 
+pod 'Specta'
+pod 'Expecta'
+
 end
 

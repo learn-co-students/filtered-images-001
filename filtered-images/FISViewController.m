@@ -23,41 +23,68 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.filterQueue = [[NSOperationQueue alloc] init];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.imageView.image = [UIImage imageNamed:@"Mickey.jpg"];
+
+    /* Part of the Advanced Portion of the Lab
+     self.filterQueue = [[NSOperationQueue alloc] init];
+     */
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)filterTapped:(UIButton *)sender {
+- (void)applyFilterToImageUsingFilterType:(UIImageFilterType)type {
+    UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
     
-    FISFilterOperation *filterOp = [[FISFilterOperation alloc] init];
-    filterOp.imageToFilter = [UIImage imageNamed:@"Mickey.jpg"];
-    filterOp.filterBlock = ^(UIImage *filteredImage) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.imageView.image = filteredImage;
-    };
-    
-    if ([sender.titleLabel.text isEqualToString:@"Sepia"]) {
-        filterOp.filterType = UIImageFilterTypeSepia;
-    }
-    else if ([sender.titleLabel.text isEqualToString:@"Invert Color"]) {
-        filterOp.filterType = UIImageFilterTypeColorInvert;
-    }
-    else if ([sender.titleLabel.text isEqualToString:@"Vignette"]) {
-        filterOp.filterType = UIImageFilterTypeVignette;
-    }
-    
-    [self.filterQueue addOperation:filterOp];
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    [operationQueue addOperationWithBlock:^{
+        UIImage *filtered = [nonFiltered imageWithFilter:type];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            self.imageView.image = filtered;
+        }];
+    }];
 }
+
+- (IBAction)vignetterTapped:(id)sender {
+    [self applyFilterToImageUsingFilterType:UIImageFilterTypeVignette];
+}
+
+- (IBAction)sepiaTapped:(id)sender {
+    [self applyFilterToImageUsingFilterType:UIImageFilterTypeSepia];
+}
+
+- (IBAction)invertedTapped:(id)sender {
+    [self applyFilterToImageUsingFilterType:UIImageFilterTypeColorInvert];
+}
+
+
+/* Part of the Advanced Portion of the Lab
+ - (IBAction)filterTapped:(UIButton *)sender {
+ 
+ FISFilterOperation *filterOp = [[FISFilterOperation alloc] init];
+ filterOp.imageToFilter = [UIImage imageNamed:@"Mickey.jpg"];
+ filterOp.filterBlock = ^(UIImage *filteredImage) {
+ [MBProgressHUD hideHUDForView:self.view animated:YES];
+ self.imageView.image = filteredImage;
+ };
+ 
+ if ([sender.titleLabel.text isEqualToString:@"Sepia"]) {
+ filterOp.filterType = UIImageFilterTypeSepia;
+ }
+ else if ([sender.titleLabel.text isEqualToString:@"Invert Color"]) {
+ filterOp.filterType = UIImageFilterTypeColorInvert;
+ }
+ else if ([sender.titleLabel.text isEqualToString:@"Vignette"]) {
+ filterOp.filterType = UIImageFilterTypeVignette;
+ }
+ 
+ [self.filterQueue addOperation:filterOp];
+ 
+ [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+ 
+ }
+ */
 
 @end

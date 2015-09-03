@@ -1,10 +1,16 @@
 PODS:
+  - Expecta (1.0.2)
   - MBProgressHUD (0.9.1)
+  - Specta (1.0.3)
 
 DEPENDENCIES:
+  - Expecta
   - MBProgressHUD
+  - Specta
 
 SPEC CHECKSUMS:
+  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2
