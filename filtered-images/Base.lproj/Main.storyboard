@@ -58,6 +58,9 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="CbX-vt-em1" id="l4Z-Km-qBL"/>
+                        <outlet property="invertColorButton" destination="6pg-g8-aRL" id="ycZ-PE-Aae"/>
+                        <outlet property="sepiaButton" destination="N6S-dC-nDl" id="CRH-ao-7fD"/>
+                        <outlet property="vignetteButton" destination="CpS-33-Gcq" id="kwz-pf-Ko5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

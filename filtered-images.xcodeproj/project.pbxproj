@@ -11,7 +11,8 @@
 		317B53CF1ADEF73800E82B6E /* UIImage+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 317B53CE1ADEF73800E82B6E /* UIImage+Filters.m */; };
 		36A3F4B1BB42AD4FFE78EE3C /* libPods-filtered-imagesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C3F3E4E6AD5447BF97DC84 /* libPods-filtered-imagesTests.a */; };
 		5BBE250A1B9898C9006C9D18 /* FISViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE25091B9898C9006C9D18 /* FISViewControllerSpec.m */; };
-		5BBE250D1B9898EF006C9D18 /* FISViewControllerSpecTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE250C1B9898EF006C9D18 /* FISViewControllerSpecTestHelper.m */; };
+		5BBE250D1B9898EF006C9D18 /* FISTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE250C1B9898EF006C9D18 /* FISTestHelper.m */; };
+		5BBE250F1B98A6EB006C9D18 /* filtered_imagesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE250E1B98A6EB006C9D18 /* filtered_imagesTests.m */; };
 		D833EF88197FE7CE00E99358 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF87197FE7CE00E99358 /* Foundation.framework */; };
 		D833EF8A197FE7CE00E99358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF89197FE7CE00E99358 /* CoreGraphics.framework */; };
 		D833EF8C197FE7CE00E99358 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF8B197FE7CE00E99358 /* UIKit.framework */; };
@@ -50,8 +51,9 @@
 		42C3F3E4E6AD5447BF97DC84 /* libPods-filtered-imagesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-filtered-imagesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E72F4DD611044A1106F2C8 /* Pods-filtered-images.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-filtered-images.release.xcconfig"; path = "Pods/Target Support Files/Pods-filtered-images/Pods-filtered-images.release.xcconfig"; sourceTree = "<group>"; };
 		5BBE25091B9898C9006C9D18 /* FISViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISViewControllerSpec.m; path = "filtered-imagesTests/FISViewControllerSpec.m"; sourceTree = SOURCE_ROOT; };
-		5BBE250B1B9898EF006C9D18 /* FISViewControllerSpecTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISViewControllerSpecTestHelper.h; sourceTree = "<group>"; };
-		5BBE250C1B9898EF006C9D18 /* FISViewControllerSpecTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISViewControllerSpecTestHelper.m; sourceTree = "<group>"; };
+		5BBE250B1B9898EF006C9D18 /* FISTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISTestHelper.h; sourceTree = "<group>"; };
+		5BBE250C1B9898EF006C9D18 /* FISTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISTestHelper.m; sourceTree = "<group>"; };
+		5BBE250E1B98A6EB006C9D18 /* filtered_imagesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filtered_imagesTests.m; sourceTree = "<group>"; };
 		601CF7267F6FD0A5BC8C4A5C /* libPods-filtered-images.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-filtered-images.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D833EF84197FE7CE00E99358 /* filtered-images.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "filtered-images.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D833EF87197FE7CE00E99358 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -176,7 +178,6 @@
 		D833EF8E197FE7CE00E99358 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5BBE25091B9898C9006C9D18 /* FISViewControllerSpec.m */,
 				D833EF8F197FE7CE00E99358 /* filtered-images-Info.plist */,
 				D833EF90197FE7CE00E99358 /* InfoPlist.strings */,
 				D833EF93197FE7CE00E99358 /* main.m */,
@@ -188,8 +189,10 @@
 		D833EFAC197FE7CE00E99358 /* filtered-imagesTests */ = {
 			isa = PBXGroup;
 			children = (
-				5BBE250B1B9898EF006C9D18 /* FISViewControllerSpecTestHelper.h */,
-				5BBE250C1B9898EF006C9D18 /* FISViewControllerSpecTestHelper.m */,
+				5BBE25091B9898C9006C9D18 /* FISViewControllerSpec.m */,
+				5BBE250B1B9898EF006C9D18 /* FISTestHelper.h */,
+				5BBE250C1B9898EF006C9D18 /* FISTestHelper.m */,
+				5BBE250E1B98A6EB006C9D18 /* filtered_imagesTests.m */,
 				D833EFAD197FE7CE00E99358 /* Supporting Files */,
 			);
 			path = "filtered-imagesTests";
@@ -382,8 +385,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BBE250D1B9898EF006C9D18 /* FISViewControllerSpecTestHelper.m in Sources */,
+				5BBE250D1B9898EF006C9D18 /* FISTestHelper.m in Sources */,
 				5BBE250A1B9898C9006C9D18 /* FISViewControllerSpec.m in Sources */,
+				5BBE250F1B98A6EB006C9D18 /* filtered_imagesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

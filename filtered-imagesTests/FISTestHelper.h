@@ -1,5 +1,5 @@
 //
-//  FISViewControllerSpecTestHelper.h
+//  FISTestHelper.h
 //  filtered-images
 //
 //  Created by James Campagno on 9/3/15.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FISViewControllerSpecTestHelper : NSObject
+@interface FISTestHelper : NSObject
 
-- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2;
++ (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2;
 
 @end

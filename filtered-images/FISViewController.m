@@ -14,17 +14,24 @@
 
 @interface FISViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *sepiaButton;
+@property (weak, nonatomic) IBOutlet UIButton *invertColorButton;
+@property (weak, nonatomic) IBOutlet UIButton *vignetteButton;
+
+
 @property (strong, nonatomic) NSOperationQueue *filterQueue;
 
 @end
 
 @implementation FISViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.imageView.image = [UIImage imageNamed:@"Mickey.jpg"];
-
+    
+    [self setUpTheAccessibilityLabelsForTheTests];
+    
     /* Part of the Advanced Portion of the Lab
      self.filterQueue = [[NSOperationQueue alloc] init];
      */
@@ -48,17 +55,41 @@
 }
 
 - (IBAction)vignetterTapped:(id)sender {
+    NSLog(@"Vignette is tapped! <------------------------");
+    
     [self applyFilterToImageUsingFilterType:UIImageFilterTypeVignette];
 }
 
 - (IBAction)sepiaTapped:(id)sender {
+    NSLog(@"Sepia is tapped! <------------------------");
+
     [self applyFilterToImageUsingFilterType:UIImageFilterTypeSepia];
 }
 
 - (IBAction)invertedTapped:(id)sender {
+    NSLog(@"Inverted is tapped! <------------------------");
+
     [self applyFilterToImageUsingFilterType:UIImageFilterTypeColorInvert];
 }
 
+
+- (void)setUpTheAccessibilityLabelsForTheTests {
+    [self setAccessibilityLabelAndIdentifierOfObject:self.imageView
+                                                  to:@"Main Image"];
+    [self setAccessibilityLabelAndIdentifierOfObject:self.sepiaButton
+                                                  to:@"Sepia Button"];
+    [self setAccessibilityLabelAndIdentifierOfObject:self.invertColorButton
+                                                  to:@"Invert Color Button"];
+    [self setAccessibilityLabelAndIdentifierOfObject:self.vignetteButton
+                                                  to:@"Vignette Button"];
+}
+
+
+- (void)setAccessibilityLabelAndIdentifierOfObject:(id)object
+                                                to:(NSString *)name {
+    [object setAccessibilityIdentifier:name];
+    [object setAccessibilityLabel:name];
+}
 
 /* Part of the Advanced Portion of the Lab
  - (IBAction)filterTapped:(UIButton *)sender {

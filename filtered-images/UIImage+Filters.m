@@ -35,6 +35,7 @@ const CGFloat ColorControlPresetInputSaturation = 1.0f;
 
 - (UIImage *) imageWithFilter: (UIImageFilterType) kFilterType{
     //underlying Core Image data of the image
+    
     CIImage *ciImage = self.CIImage;
     //if ciImage is null this means the underlying data was a CGImage, which must be converted to a CIImage
     if (!ciImage){
@@ -79,6 +80,8 @@ const CGFloat ColorControlPresetInputSaturation = 1.0f;
             break;
     }
     return [UIImage imageWithCIImage:[filter outputImage]];
+    
+    
 }
 
 @end
