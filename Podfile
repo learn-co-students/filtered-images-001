@@ -11,6 +11,7 @@ target 'filtered-imagesTests' do
 
 pod 'Specta'
 pod 'Expecta'
+pod 'KIF'
 
 end
 
