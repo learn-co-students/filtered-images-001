@@ -10,8 +10,7 @@
 
 @implementation FISFilterOperation
 
--(void)main {
-    
+- (void)main {
     UIImage *filtered = [self.imageToFilter imageWithFilter:self.filterType];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -19,7 +18,6 @@
             self.filterBlock(filtered);
         }
     }];
-    
 }
 
 @end

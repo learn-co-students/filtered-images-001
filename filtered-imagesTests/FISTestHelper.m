@@ -10,7 +10,7 @@
 
 @implementation FISTestHelper
 
-+ (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2 {
++ (BOOL)isImage:(UIImage *)image1 equalToImage:(UIImage *)image2 {
     NSData *dataOfImage1 = [FISTestHelper createDataObjectWithImage:image1];
     NSData *dataOfImage2 = [FISTestHelper createDataObjectWithImage:image2];
     
@@ -29,6 +29,20 @@
     NSData *thumbNailimageData = UIImagePNGRepresentation(newImage);
     UIGraphicsEndImageContext();
     return thumbNailimageData;
+}
+
++ (void)useFISFilterOperationToFilterImageUsingType:(UIImageFilterType)type
+                                          withBlock:(void (^)(UIImage *filteredImage))block {
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    FISFilterOperation *filterOp = [[FISFilterOperation alloc] init];
+    
+    filterOp.imageToFilter = [UIImage imageNamed:@"Mickey.jpg"];
+    filterOp.filterType = type;
+    filterOp.filterBlock = ^(UIImage *imageFiltered) {
+        block(imageFiltered);
+    };
+    
+    [operationQueue addOperation:filterOp];
 }
 
 @end

@@ -13,7 +13,6 @@
 		5BBE250A1B9898C9006C9D18 /* FISViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE25091B9898C9006C9D18 /* FISViewControllerSpec.m */; };
 		5BBE250D1B9898EF006C9D18 /* FISTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE250C1B9898EF006C9D18 /* FISTestHelper.m */; };
 		5BBE250F1B98A6EB006C9D18 /* filtered_imagesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE250E1B98A6EB006C9D18 /* filtered_imagesTests.m */; };
-		5BBE25121B98F287006C9D18 /* NSOperationQueue+Methods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE25111B98F287006C9D18 /* NSOperationQueue+Methods.m */; };
 		D833EF88197FE7CE00E99358 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF87197FE7CE00E99358 /* Foundation.framework */; };
 		D833EF8A197FE7CE00E99358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF89197FE7CE00E99358 /* CoreGraphics.framework */; };
 		D833EF8C197FE7CE00E99358 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF8B197FE7CE00E99358 /* UIKit.framework */; };
@@ -55,8 +54,6 @@
 		5BBE250B1B9898EF006C9D18 /* FISTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISTestHelper.h; sourceTree = "<group>"; };
 		5BBE250C1B9898EF006C9D18 /* FISTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISTestHelper.m; sourceTree = "<group>"; };
 		5BBE250E1B98A6EB006C9D18 /* filtered_imagesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filtered_imagesTests.m; sourceTree = "<group>"; };
-		5BBE25101B98F287006C9D18 /* NSOperationQueue+Methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+Methods.h"; sourceTree = "<group>"; };
-		5BBE25111B98F287006C9D18 /* NSOperationQueue+Methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+Methods.m"; sourceTree = "<group>"; };
 		601CF7267F6FD0A5BC8C4A5C /* libPods-filtered-images.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-filtered-images.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D833EF84197FE7CE00E99358 /* filtered-images.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "filtered-images.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D833EF87197FE7CE00E99358 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -195,8 +192,6 @@
 				5BBE25091B9898C9006C9D18 /* FISViewControllerSpec.m */,
 				5BBE250B1B9898EF006C9D18 /* FISTestHelper.h */,
 				5BBE250C1B9898EF006C9D18 /* FISTestHelper.m */,
-				5BBE25101B98F287006C9D18 /* NSOperationQueue+Methods.h */,
-				5BBE25111B98F287006C9D18 /* NSOperationQueue+Methods.m */,
 				5BBE250E1B98A6EB006C9D18 /* filtered_imagesTests.m */,
 				D833EFAD197FE7CE00E99358 /* Supporting Files */,
 			);
@@ -393,7 +388,6 @@
 				5BBE250D1B9898EF006C9D18 /* FISTestHelper.m in Sources */,
 				5BBE250A1B9898C9006C9D18 /* FISViewControllerSpec.m in Sources */,
 				5BBE250F1B98A6EB006C9D18 /* filtered_imagesTests.m in Sources */,
-				5BBE25121B98F287006C9D18 /* NSOperationQueue+Methods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

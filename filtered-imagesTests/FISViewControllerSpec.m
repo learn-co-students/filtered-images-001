@@ -25,14 +25,19 @@ describe(@"FISViewController", ^{
     __block UIImage *colorInvertFilteredImage;
     __block UIImageView *imageViewOfVC;
     __block FISViewController *currentVC;
-    __block NSOperationQueue *currentOperationQueue;
+    __block FISFilterOperation *filterOperation;
+    __block NSOperationQueue *operationQueue;
+    __block BOOL isSepiaFilterAppliedToImage;
+    __block BOOL isInvertColorFilterAppliedToImage;
+    __block BOOL isVignetteFilterAppliedToImage;
     
     
     beforeAll(^{
         FISAppDelegate *myDelegate = (FISAppDelegate *)[UIApplication sharedApplication].delegate;
         currentVC = (FISViewController *)myDelegate.window.rootViewController;
         imageViewOfVC = [currentVC valueForKey:@"imageView"];
-        currentOperationQueue = [currentVC valueForKey:@"operationQueue"];
+        filterOperation = [[FISFilterOperation alloc] init];
+        operationQueue = [[NSOperationQueue alloc] init];
         
         [tester waitForViewWithAccessibilityLabel:@"Main Image"];
         [tester waitForViewWithAccessibilityLabel:@"Sepia Button"];
@@ -51,159 +56,81 @@ describe(@"FISViewController", ^{
     describe(@"applyFilterToImageUsingFilterType:", ^{
         
         it(@"Shold apply the filter which is passed into this method to the Mickey.jpg (representing the background image of the view) image and then set the self.imageView property to equal this filtered image.  This happens when the appropiate button is tapped (Sepia, Invert color, or vignette button)", ^{
-            
-            
-            
+            //These tests apply to the basic portion of the lab.
             
             [tester tapViewWithAccessibilityLabel:@"Sepia Button"];
-            //            [tester waitForTimeInterval:1];
-            
-            BOOL isSepiaFilterAppliedToImage = [FISTestHelper image:sepiaFilteredImage
-                                                          isEqualTo:imageViewOfVC.image];
+            isSepiaFilterAppliedToImage = [FISTestHelper isImage:sepiaFilteredImage
+                                                    equalToImage:imageViewOfVC.image];
             
             expect(isSepiaFilterAppliedToImage).to.equal(YES);
             
-            
+        
             [tester tapViewWithAccessibilityLabel:@"Invert Color Button"];
-            //            [tester waitForTimeInterval:1];
-            
-            BOOL isInvertColorFilterAppliedToImage = [FISTestHelper image:colorInvertFilteredImage
-                                                                isEqualTo:imageViewOfVC.image];
+            isInvertColorFilterAppliedToImage = [FISTestHelper isImage:colorInvertFilteredImage
+                                                          equalToImage:imageViewOfVC.image];
             
             expect(isInvertColorFilterAppliedToImage).to.equal(YES);
             
             
             [tester tapViewWithAccessibilityLabel:@"Vignette Button"];
-            //            [tester waitForTimeInterval:1];
-            
-            BOOL isVignetteFilterAppliedToImage = [FISTestHelper image:vignetteFilteredImage
-                                                             isEqualTo:imageViewOfVC.image];
+            isVignetteFilterAppliedToImage = [FISTestHelper isImage:vignetteFilteredImage
+                                                       equalToImage:imageViewOfVC.image];
             
             expect(isVignetteFilterAppliedToImage).to.equal(YES);
             
-            imageViewOfVC.image = unfilteredImage;
             
             
+            //These tests apply to the advanced portion of the lab.  Uncomment to run these tests against the code you wrote.
+            __block UIImage *sepiaImage;
+            [FISTestHelper useFISFilterOperationToFilterImageUsingType:UIImageFilterTypeSepia
+                                                             withBlock:^(UIImage *filteredImage) {
+                                                                    sepiaImage = filteredImage;
+                                                                }];
             
-            NSOperation *operation = [[NSOperation alloc] init];
-            NSOperation *fakeOperation = [[NSOperation alloc] init];
-            
-            [operation addDependency:fakeOperation];
-            
-            [currentOperationQueue addOperation:operation];
-//            [operationQueue addOperation:resizingOperation];
-
             [tester tapViewWithAccessibilityLabel:@"Sepia Button"];
             
+            BOOL isSepiaFilteredAppliedThroughFISFilterOperation = [FISTestHelper isImage:sepiaImage
+                                                                             equalToImage:sepiaFilteredImage];
+            isSepiaFilterAppliedToImage = [FISTestHelper isImage:sepiaFilteredImage
+                                                    equalToImage:imageViewOfVC.image];
+            
+            expect(isSepiaFilteredAppliedThroughFISFilterOperation).to.equal(YES);
+            expect(isSepiaFilterAppliedToImage).to.equal(YES);
             
             
+            __block UIImage *colerInvertImage;
+            [FISTestHelper useFISFilterOperationToFilterImageUsingType:UIImageFilterTypeColorInvert
+                                                             withBlock:^(UIImage *filteredImage) {
+                                                                    colerInvertImage = filteredImage;
+                                                                }];
+            
+            [tester tapViewWithAccessibilityLabel:@"Invert Color Button"];
+            
+            BOOL isColorInvertFilteredAppliedThroughFISFilterOperation = [FISTestHelper isImage:colerInvertImage
+                                                                                   equalToImage:colorInvertFilteredImage];
+            isInvertColorFilterAppliedToImage = [FISTestHelper isImage:colorInvertFilteredImage
+                                                          equalToImage:imageViewOfVC.image];
+            
+            expect(isColorInvertFilteredAppliedThroughFISFilterOperation).to.equal(YES);
+            expect(isInvertColorFilterAppliedToImage).to.equal(YES);
             
             
-            BOOL sepiaTappedAgain = [FISTestHelper image:sepiaFilteredImage
-                                          isEqualTo:imageViewOfVC.image];
+            __block UIImage *vignetteImage;
+            [FISTestHelper useFISFilterOperationToFilterImageUsingType:UIImageFilterTypeVignette
+                                                             withBlock:^(UIImage *filteredImage) {
+                                                                    vignetteImage = filteredImage;
+                                                                }];
             
+            [tester tapViewWithAccessibilityLabel:@"Vignette Button"];
             
-            expect(sepiaTappedAgain).to.equal(YES);
+            BOOL isVignetteFilteredAppliedThroughFISFilterOperation = [FISTestHelper isImage:vignetteImage
+                                                                                equalToImage:vignetteFilteredImage];
+            isVignetteFilterAppliedToImage = [FISTestHelper isImage:vignetteFilteredImage
+                                                       equalToImage:imageViewOfVC.image];
             
-            
-            
-            
-            
-            //            NSRecursiveLock *theLock = [[NSRecursiveLock alloc] init];
-            //            [theLock lock];
-            
-            
-            //            NSLock *theLock = [[NSLock alloc] init];
-            //
-            //            [theLock lock];
-            
-            NSLog(@"before dispatch async");
-            
-            NSLog(@"after dispatch async");
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            //            [tester waitForTimeInterval:1];
-            
-            
-            
-            
-            //            [theLock unlock];
-            
-            
-            
-            //            [theLock unlock];
-            
-            
-            
-            //            [theLock lock];
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            //                [theLock unlock];
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+            expect(isVignetteFilteredAppliedThroughFISFilterOperation).to.equal(YES);
+            expect(isVignetteFilterAppliedToImage).to.equal(YES);
         });
-        
-        //        - (void)applyFilterToImageUsingFilterType:(UIImageFilterType)type {
-        //            UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
-        //
-        //            NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-        //
-        //            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //
-        //            [operationQueue addOperationWithBlock:^{
-        //                UIImage *filtered = [nonFiltered imageWithFilter:type];
-        //
-        //                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        //                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-        //                    self.imageView.image = filtered;
-        //                }];
-        //            }];
-        //        }
-        //
-        //        - (IBAction)vignetterTapped:(id)sender {
-        //            [self applyFilterToImageUsingFilterType:UIImageFilterTypeVignette];
-        //        }
-        //
-        //        - (IBAction)sepiaTapped:(id)sender {
-        //            [self applyFilterToImageUsingFilterType:UIImageFilterTypeSepia];
-        //        }
-        //
-        //        - (IBAction)invertedTapped:(id)sender {
-        //            [self applyFilterToImageUsingFilterType:UIImageFilterTypeColorInvert];
-        //        }
-        
-        
-        
-        
-        
     });
 });
 

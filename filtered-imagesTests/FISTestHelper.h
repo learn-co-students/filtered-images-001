@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FISFilterOperation.h"
+#import "UIImage+Filters.h"
 
 @interface FISTestHelper : NSObject
 
-+ (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2;
++ (BOOL)isImage:(UIImage *)image1 equalToImage:(UIImage *)image2;
++ (void)useFISFilterOperationToFilterImageUsingType:(UIImageFilterType)type
+                                          withBlock:(void (^)(UIImage *filteredImage))block;
 
 @end
