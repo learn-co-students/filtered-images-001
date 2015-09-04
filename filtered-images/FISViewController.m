@@ -17,10 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *sepiaButton;
 @property (weak, nonatomic) IBOutlet UIButton *invertColorButton;
 @property (weak, nonatomic) IBOutlet UIButton *vignetteButton;
-@property (strong, nonatomic) NSOperationQueue *operationQueue;
-
-
-
 @property (strong, nonatomic) NSOperationQueue *filterQueue;
 
 @end
@@ -29,21 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.operationQueue = [[NSOperationQueue alloc] init];
+    
     self.imageView.image = [UIImage imageNamed:@"Mickey.jpg"];
-    
-    
-    NSOperation *operation = [[NSOperation alloc] init];
-    NSOperation *fakeOperation = [[NSOperation alloc] init];
-    
-    [operation addDependency:fakeOperation];
-    
-    [self.operationQueue addOperation:operation];
-    [self.operationQueue addOperation:fakeOperation];
     
     [self setUpTheAccessibilityLabelsForTheTests];
     
-    /* Part of the Advanced Portion of the Lab
+    /* Uncomment the following line if you want to run the advanced portion.
      self.filterQueue = [[NSOperationQueue alloc] init];
      */
 }
@@ -51,9 +38,11 @@
 - (void)applyFilterToImageUsingFilterType:(UIImageFilterType)type {
     UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
     
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [self.operationQueue addOperationWithBlock:^{
+    [operationQueue addOperationWithBlock:^{
         UIImage *filtered = [nonFiltered imageWithFilter:type];
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -64,23 +53,43 @@
 }
 
 - (IBAction)vignetterTapped:(id)sender {
-    NSLog(@"Vignette is tapped! <------------------------");
-    
+    //Comment out the next line if you're looking to run the advanced portion.
     [self applyFilterToImageUsingFilterType:UIImageFilterTypeVignette];
+    
+    
+    /*Uncomment the following three lines if you want to run the advanced portion.
+    FISFilterOperation *filterOp = [self createFilterOperationFromFilterType:UIImageFilterTypeVignette];
+    [self.filterQueue addOperation:filterOp];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+     */
 }
 
 - (IBAction)sepiaTapped:(id)sender {
-    NSLog(@"Sepia is tapped! <------------------------");
-    
+    //Comment out the next line if you're looking to run the advanced portion.
     [self applyFilterToImageUsingFilterType:UIImageFilterTypeSepia];
+    
+    
+    /*Uncomment the following three lines if you want to run the advanced portion.
+    FISFilterOperation *filterOp = [self createFilterOperationFromFilterType:UIImageFilterTypeSepia];
+    [self.filterQueue addOperation:filterOp];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+     */
 }
 
 - (IBAction)invertedTapped:(id)sender {
-    NSLog(@"Inverted is tapped! <------------------------");
-    
+    //Comment out the next line if you're looking to run the advanced portion.
     [self applyFilterToImageUsingFilterType:UIImageFilterTypeColorInvert];
+    
+    
+    /*Uncomment the following three lines if you want to run the advanced portion.
+     FISFilterOperation *filterOp = [self createFilterOperationFromFilterType:UIImageFilterTypeColorInvert];
+     [self.filterQueue addOperation:filterOp];
+     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+     */
 }
 
+
+#pragma mark - Helper Methods
 
 - (void)setUpTheAccessibilityLabelsForTheTests {
     [self setAccessibilityLabelAndIdentifierOfObject:self.imageView
@@ -93,36 +102,22 @@
                                                   to:@"Vignette Button"];
 }
 
-
 - (void)setAccessibilityLabelAndIdentifierOfObject:(id)object
                                                 to:(NSString *)name {
     [object setAccessibilityIdentifier:name];
     [object setAccessibilityLabel:name];
 }
 
-- (IBAction)filterTapped:(UIButton *)sender {
+- (FISFilterOperation *)createFilterOperationFromFilterType:(UIImageFilterType)type {
     FISFilterOperation *filterOp = [[FISFilterOperation alloc] init];
     filterOp.imageToFilter = [UIImage imageNamed:@"Mickey.jpg"];
     filterOp.filterBlock = ^(UIImage *filteredImage) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.imageView.image = filteredImage;
     };
+    filterOp.filterType = type;
     
-    if ([sender.titleLabel.text isEqualToString:@"Sepia"]) {
-        filterOp.filterType = UIImageFilterTypeSepia;
-    }
-    else if ([sender.titleLabel.text isEqualToString:@"Invert Color"]) {
-        filterOp.filterType = UIImageFilterTypeColorInvert;
-    }
-    else if ([sender.titleLabel.text isEqualToString:@"Vignette"]) {
-        filterOp.filterType = UIImageFilterTypeVignette;
-    }
-    
-    [self.filterQueue addOperation:filterOp];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
+    return filterOp;
 }
-
 
 @end
