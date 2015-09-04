@@ -10,6 +10,8 @@
 		155D6220E3D52AE85AEFAA4C /* libPods-filtered-images.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA910F0BB388F095DD16E410 /* libPods-filtered-images.a */; };
 		317B53CF1ADEF73800E82B6E /* UIImage+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 317B53CE1ADEF73800E82B6E /* UIImage+Filters.m */; };
 		3C4E52A9C2D075B2AEC87755 /* libPods-filtered-imagesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E9FABEB315588016FE993E /* libPods-filtered-imagesTests.a */; };
+		5BC8EF411B9A057A00AE34CA /* FISTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8EF401B9A057A00AE34CA /* FISTestHelper.m */; };
+		5BC8EF431B9A062600AE34CA /* FISViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC8EF421B9A062600AE34CA /* FISViewControllerSpec.m */; };
 		D833EF88197FE7CE00E99358 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF87197FE7CE00E99358 /* Foundation.framework */; };
 		D833EF8A197FE7CE00E99358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF89197FE7CE00E99358 /* CoreGraphics.framework */; };
 		D833EF8C197FE7CE00E99358 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF8B197FE7CE00E99358 /* UIKit.framework */; };
@@ -44,6 +46,9 @@
 		317B53CE1ADEF73800E82B6E /* UIImage+Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Filters.m"; sourceTree = "<group>"; };
 		3ACCD107016F40028AF55B27 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF9B2E56F72A597CCEB9EB7 /* Pods-filtered-images.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-filtered-images.release.xcconfig"; path = "Pods/Target Support Files/Pods-filtered-images/Pods-filtered-images.release.xcconfig"; sourceTree = "<group>"; };
+		5BC8EF3F1B9A057A00AE34CA /* FISTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISTestHelper.h; sourceTree = "<group>"; };
+		5BC8EF401B9A057A00AE34CA /* FISTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISTestHelper.m; sourceTree = "<group>"; };
+		5BC8EF421B9A062600AE34CA /* FISViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISViewControllerSpec.m; sourceTree = "<group>"; };
 		6B3CC4A848C0381DCDED9710 /* Pods-filtered-imagesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-filtered-imagesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-filtered-imagesTests/Pods-filtered-imagesTests.release.xcconfig"; sourceTree = "<group>"; };
 		D833EF84197FE7CE00E99358 /* filtered-images.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "filtered-images.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D833EF87197FE7CE00E99358 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -179,6 +184,9 @@
 		D833EFAC197FE7CE00E99358 /* filtered-imagesTests */ = {
 			isa = PBXGroup;
 			children = (
+				5BC8EF3F1B9A057A00AE34CA /* FISTestHelper.h */,
+				5BC8EF401B9A057A00AE34CA /* FISTestHelper.m */,
+				5BC8EF421B9A062600AE34CA /* FISViewControllerSpec.m */,
 				D833EFB2197FE7CE00E99358 /* filtered_imagesTests.m */,
 				D833EFAD197FE7CE00E99358 /* Supporting Files */,
 			);
@@ -371,6 +379,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC8EF411B9A057A00AE34CA /* FISTestHelper.m in Sources */,
+				5BC8EF431B9A062600AE34CA /* FISViewControllerSpec.m in Sources */,
 				D833EFB3197FE7CE00E99358 /* filtered_imagesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
