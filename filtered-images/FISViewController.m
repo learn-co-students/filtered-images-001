@@ -35,22 +35,7 @@
      */
 }
 
-- (void)applyFilterToImageUsingFilterType:(UIImageFilterType)type {
-    UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
-    
-    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [operationQueue addOperationWithBlock:^{
-        UIImage *filtered = [nonFiltered imageWithFilter:type];
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            self.imageView.image = filtered;
-        }];
-    }];
-}
+#pragma mark - Action Methods
 
 - (IBAction)vignetterTapped:(id)sender {
     //Comment out the next line if you're looking to run the advanced portion.
@@ -90,6 +75,23 @@
 
 
 #pragma mark - Helper Methods
+
+- (void)applyFilterToImageUsingFilterType:(UIImageFilterType)type {
+    UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
+    
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [operationQueue addOperationWithBlock:^{
+        UIImage *filtered = [nonFiltered imageWithFilter:type];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            self.imageView.image = filtered;
+        }];
+    }];
+}
 
 - (void)setUpTheAccessibilityLabelsForTheTests {
     [self setAccessibilityLabelAndIdentifierOfObject:self.imageView
