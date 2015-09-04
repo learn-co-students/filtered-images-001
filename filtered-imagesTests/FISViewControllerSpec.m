@@ -25,12 +25,14 @@ describe(@"FISViewController", ^{
     __block UIImage *colorInvertFilteredImage;
     __block UIImageView *imageViewOfVC;
     __block FISViewController *currentVC;
+    __block NSOperationQueue *currentOperationQueue;
     
     
     beforeAll(^{
         FISAppDelegate *myDelegate = (FISAppDelegate *)[UIApplication sharedApplication].delegate;
         currentVC = (FISViewController *)myDelegate.window.rootViewController;
         imageViewOfVC = [currentVC valueForKey:@"imageView"];
+        currentOperationQueue = [currentVC valueForKey:@"operationQueue"];
         
         [tester waitForViewWithAccessibilityLabel:@"Main Image"];
         [tester waitForViewWithAccessibilityLabel:@"Sepia Button"];
@@ -83,6 +85,29 @@ describe(@"FISViewController", ^{
             
             
             
+            NSOperation *operation = [[NSOperation alloc] init];
+            NSOperation *fakeOperation = [[NSOperation alloc] init];
+            
+            [operation addDependency:fakeOperation];
+            
+            [currentOperationQueue addOperation:operation];
+//            [operationQueue addOperation:resizingOperation];
+
+            [tester tapViewWithAccessibilityLabel:@"Sepia Button"];
+            
+            
+            
+            
+            
+            BOOL sepiaTappedAgain = [FISTestHelper image:sepiaFilteredImage
+                                          isEqualTo:imageViewOfVC.image];
+            
+            
+            expect(sepiaTappedAgain).to.equal(YES);
+            
+            
+            
+            
             
             //            NSRecursiveLock *theLock = [[NSRecursiveLock alloc] init];
             //            [theLock lock];
@@ -93,27 +118,13 @@ describe(@"FISViewController", ^{
             //            [theLock lock];
             
             NSLog(@"before dispatch async");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                                [tester tapViewWithAccessibilityLabel:@"Invert Color Button"];
-
-                NSLog(@"inside dispatch async block main thread from main thread");
-            });
+            
             NSLog(@"after dispatch async");
             
-#define ensureInMainThread(); if (!NSThread.isMainThread) { [self performSelectorOnMainThread:_cmd withObject:nil waitUntilDone:NO];    return; }
-            
-            ensureInMainThread();
-            
-            
-            [tester tapViewWithAccessibilityLabel:@"Sepia Button"];
 
             
-            dispatch_async( dispatch_get_main_queue(), ^{
-
-                NSLog(@"==================================GETTING CALLED!!!!!!!!!!!!!!!!!!!!!!!!");
-                
-                
-            });
+            
+            
             
             
             
@@ -121,11 +132,7 @@ describe(@"FISViewController", ^{
             
             //            [tester waitForTimeInterval:1];
             
-            BOOL sepiaOnLock = [FISTestHelper image:sepiaFilteredImage
-                                          isEqualTo:imageViewOfVC.image];
             
-            
-            expect(sepiaOnLock).to.equal(YES);
             
             
             //            [theLock unlock];

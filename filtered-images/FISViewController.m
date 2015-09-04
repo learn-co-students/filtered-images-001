@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sepiaButton;
 @property (weak, nonatomic) IBOutlet UIButton *invertColorButton;
 @property (weak, nonatomic) IBOutlet UIButton *vignetteButton;
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
+
 
 
 @property (strong, nonatomic) NSOperationQueue *filterQueue;
@@ -27,8 +29,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.operationQueue = [[NSOperationQueue alloc] init];
     self.imageView.image = [UIImage imageNamed:@"Mickey.jpg"];
+    
+    
+    NSOperation *operation = [[NSOperation alloc] init];
+    NSOperation *fakeOperation = [[NSOperation alloc] init];
+    
+    [operation addDependency:fakeOperation];
+    
+    [self.operationQueue addOperation:operation];
+    [self.operationQueue addOperation:fakeOperation];
     
     [self setUpTheAccessibilityLabelsForTheTests];
     
@@ -39,12 +50,10 @@
 
 - (void)applyFilterToImageUsingFilterType:(UIImageFilterType)type {
     UIImage *nonFiltered = [UIImage imageNamed:@"Mickey.jpg"];
-    
-    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-    
+
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [operationQueue addOperationWithBlock:^{
+    [self.operationQueue addOperationWithBlock:^{
         UIImage *filtered = [nonFiltered imageWithFilter:type];
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
