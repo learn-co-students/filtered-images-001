@@ -1,10 +1,21 @@
 PODS:
+  - Expecta (1.0.2)
+  - KIF (3.2.3):
+    - KIF/XCTest (= 3.2.3)
+  - KIF/XCTest (3.2.3)
   - MBProgressHUD (0.9.1)
+  - Specta (1.0.3)
 
 DEPENDENCIES:
+  - Expecta
+  - KIF
   - MBProgressHUD
+  - Specta
 
 SPEC CHECKSUMS:
+  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
+  KIF: a94bffe9c97e449e44f8fa481c53243d21309e1e
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2
