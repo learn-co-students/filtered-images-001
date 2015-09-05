@@ -184,9 +184,9 @@
 		D833EFAC197FE7CE00E99358 /* filtered-imagesTests */ = {
 			isa = PBXGroup;
 			children = (
+				5BC8EF421B9A062600AE34CA /* FISViewControllerSpec.m */,
 				5BC8EF3F1B9A057A00AE34CA /* FISTestHelper.h */,
 				5BC8EF401B9A057A00AE34CA /* FISTestHelper.m */,
-				5BC8EF421B9A062600AE34CA /* FISViewControllerSpec.m */,
 				D833EFB2197FE7CE00E99358 /* filtered_imagesTests.m */,
 				D833EFAD197FE7CE00E99358 /* Supporting Files */,
 			);
