@@ -39,7 +39,6 @@ describe(@"FISViewController", ^{
         filterOperation = [[FISFilterOperation alloc] init];
         operationQueue = [[NSOperationQueue alloc] init];
         
-        
         [tester waitForViewWithAccessibilityLabel:@"Main Image"];
         [tester waitForViewWithAccessibilityLabel:@"Sepia Button"];
         [tester waitForViewWithAccessibilityLabel:@"Invert Color Button"];
