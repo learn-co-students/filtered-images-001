@@ -23,6 +23,7 @@
 		D833EFB1197FE7CE00E99358 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D833EFAF197FE7CE00E99358 /* InfoPlist.strings */; };
 		D833EFB3197FE7CE00E99358 /* filtered_imagesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D833EFB2197FE7CE00E99358 /* filtered_imagesTests.m */; };
 		D833EFBD197FE82800E99358 /* Mickey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D833EFBC197FE82800E99358 /* Mickey.jpg */; };
+		E21A7DB41BF51D1100CDFB8E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21A7DB31BF51D1100CDFB8E /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		D833EFB2197FE7CE00E99358 /* filtered_imagesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = filtered_imagesTests.m; sourceTree = "<group>"; };
 		D833EFBC197FE82800E99358 /* Mickey.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mickey.jpg; sourceTree = "<group>"; };
 		DA910F0BB388F095DD16E410 /* libPods-filtered-images.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-filtered-images.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E21A7DB31BF51D1100CDFB8E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		D833EF8E197FE7CE00E99358 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E21A7DB31BF51D1100CDFB8E /* Launch Screen.storyboard */,
 				D833EF8F197FE7CE00E99358 /* filtered-images-Info.plist */,
 				D833EF90197FE7CE00E99358 /* InfoPlist.strings */,
 				D833EF93197FE7CE00E99358 /* main.m */,
@@ -231,7 +234,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FIS;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Joe Burgess";
 				TargetAttributes = {
 					D833EFA4197FE7CE00E99358 = {
@@ -266,6 +269,7 @@
 				D833EFBD197FE82800E99358 /* Mickey.jpg in Resources */,
 				D833EFA0197FE7CE00E99358 /* Images.xcassets in Resources */,
 				D833EF92197FE7CE00E99358 /* InfoPlist.strings in Resources */,
+				E21A7DB41BF51D1100CDFB8E /* Launch Screen.storyboard in Resources */,
 				D833EF9B197FE7CE00E99358 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +393,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -403,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -435,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -450,6 +455,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "filtered-images/filtered-images-Prefix.pch";
 				INFOPLIST_FILE = "filtered-images/filtered-images-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "FlatironSchool.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -464,6 +471,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "filtered-images/filtered-images-Prefix.pch";
 				INFOPLIST_FILE = "filtered-images/filtered-images-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "FlatironSchool.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -485,6 +494,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "filtered-imagesTests/filtered-imagesTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "FlatironSchool.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -503,6 +513,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "filtered-images/filtered-images-Prefix.pch";
 				INFOPLIST_FILE = "filtered-imagesTests/filtered-imagesTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "FlatironSchool.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
