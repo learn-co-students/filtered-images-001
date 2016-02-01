@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		317B53CF1ADEF73800E82B6E /* UIImage+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 317B53CE1ADEF73800E82B6E /* UIImage+Filters.m */; };
+		677DD9EB47901A2590D5DB7A /* libPods-filtered-images.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA910F0BB388F095DD16E410 /* libPods-filtered-images.a */; };
 		D833EF88197FE7CE00E99358 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF87197FE7CE00E99358 /* Foundation.framework */; };
 		D833EF8A197FE7CE00E99358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF89197FE7CE00E99358 /* CoreGraphics.framework */; };
 		D833EF8C197FE7CE00E99358 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D833EF8B197FE7CE00E99358 /* UIKit.framework */; };
@@ -74,6 +75,7 @@
 				D833EF8A197FE7CE00E99358 /* CoreGraphics.framework in Frameworks */,
 				D833EF8C197FE7CE00E99358 /* UIKit.framework in Frameworks */,
 				D833EF88197FE7CE00E99358 /* Foundation.framework in Frameworks */,
+				677DD9EB47901A2590D5DB7A /* libPods-filtered-images.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

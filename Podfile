@@ -3,7 +3,7 @@
 
 target 'filtered-images' do
 
-pod 'MBProgressHUD'
+pod ’MBProgressHUD', '~> 0.9.2'
 
 end
 
